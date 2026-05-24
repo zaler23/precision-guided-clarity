@@ -1,0 +1,6 @@
+# macOS
+.DS_Store
+
+# Local archives
+*.zip
+*.zip.sha256
