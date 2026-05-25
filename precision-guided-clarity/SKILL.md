@@ -1,44 +1,38 @@
 ---
 name: precision-guided-clarity
-description: "Optional deep workflow for Precision-Guided Clarity tasks: logic-preserving rewrites, ambiguity triage, correction recovery, context compression, state-aware execution, and high-confidence documentation edits. Not required for normal PGC style when the PGC profile is already installed."
+description: "Optional reference pack for Precision-Guided Clarity: ambiguity triage, reasoning/output calibration, technical execution, tool-mediated state checks, and multi-turn recovery. Normal behavior should come from AGENTS.md D1-D7; load this pack only when deeper procedure is needed."
 metadata:
-  version: 1.0
+  version: 1.1.0
+  runtime: none
 ---
 
-# Precision-Guided Clarity Skill
+# Precision-Guided Clarity Reference Pack
 
-This skill is now the optional deep-workflow companion to the Precision-Guided Clarity profile.
+This directory is an optional, instruction-only reference pack for agents already following `AGENTS.md` D1-D7.
 
-Normal PGC behavior should come from the always-on profile, such as `AGENTS.md` or your agent's equivalent instruction surface. Use this skill only when the task needs deeper procedure than the profile should keep in the global context.
+Normal PGC behavior should come from the always-on profile. Use these references only when the current task needs deeper procedure than the profile should keep in always-loaded context.
 
-## Use for
+## Load strategy
 
-- logic-preserving rewrite or simplification;
-- ambiguity triage;
-- correction recovery after a wrong assumption;
-- stateful technical execution;
-- context compression or long-thread recovery;
-- release-quality documentation pass.
+Default to `AGENTS.md` D1-D7. Load one targeted reference when a trigger matches. Load a second only when the task spans two distinct failure modes. Do not load more unless the user explicitly asks for deeper review.
 
-## Do not use for
+## Reference router
 
-- simple Q&A;
-- ordinary direct answers already covered by the profile;
-- project conventions that belong in project-specific instructions;
-- tasks better handled by a more specific skill.
-
-## Reference routing
-
-Load at most two references unless the task clearly needs more.
-
-| Need | Reference |
+| Trigger | Reference |
 | --- | --- |
-| Ambiguous, vague, contradictory, or emotional request | [semantic-understanding.md](references/semantic-understanding.md) |
-| Concept precision, logic-preserving clarity, output depth, decision criteria | [reasoning-and-output.md](references/reasoning-and-output.md) |
-| Commands, files, deployments, debugging, CI, migrations | [technical-execution.md](references/technical-execution.md) |
-| Current state, file/config/version checks, validation evidence | [tool-action-strategy.md](references/tool-action-strategy.md) |
-| User correction, direction change, long-context drift | [multiturn-recovery.md](references/multiturn-recovery.md) |
+| Ambiguous, vague, contradictory, emotional, or previously misread request | [semantic-understanding.md](references/semantic-understanding.md) |
+| Concept precision, decision criteria, reasoning depth, output shape, or logic-preserving clarity | [reasoning-and-output.md](references/reasoning-and-output.md) |
+| Code, commands, files, deployment, debugging, CI, migrations, or scripts | [technical-execution.md](references/technical-execution.md) |
+| Current state, file/config/version checks, tool choice, external verification, or validation evidence | [tool-action-strategy.md](references/tool-action-strategy.md) |
+| User correction, direction change, rejected assumption, long-context drift, or recovery | [multiturn-recovery.md](references/multiturn-recovery.md) |
 
-## Operating rule
+## Expected behavior change
 
-Make the profile's light behavior automatic and this skill's heavy behavior available. Do not duplicate long reference content into always-loaded instructions.
+After loading a reference, apply its procedure to the current task and return to the smallest useful output. Do not summarize the reference unless the user asks for the reference itself.
+
+## Boundaries
+
+- This pack is text-only.
+- It contains no executable code, install hook, network behavior, credentials, or runtime dependency.
+- It is not a client-specific adapter.
+- It should not override higher-priority safety, user, project, or task-specific instructions.

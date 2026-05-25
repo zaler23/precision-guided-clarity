@@ -1,112 +1,88 @@
 # precision-guided-clarity
 
-一个轻量、跨 agent 的全局操作风格 profile。它通过一份指令文件，引导 agent 在各类任务中保持一致的工作方式，而不引入运行时代码或外部依赖。
+Precision-Guided Clarity 是一份通用的智能体指令 profile，可复制或合并到任意兼容 agent 的指令入口，例如 system prompt、项目指令、`AGENTS.md` 风格文件或自定义指令字段。它不是某个具体客户端的适配包。
 
-版本：v1.0
+**版本：** 1.1.0  
+**主产物：** `AGENTS.md`  
+**可选产物：** `precision-guided-clarity/` reference pack，供兼容的按需 skill 或参考系统使用
 
 ## 设计目标
 
-让 agent 在执行任务时保持以下风格：
+PGC 优先保证 agent 行为好用，其次才是轻量、可复制和低 token。它帮助 agent：
 
-- **直接输出优先**：先给结论或可执行结果，再补充必要说明。
-- **先检查最窄相关状态再猜测**：在动手前查看最小范围的相关上下文，而不是凭印象推断。
-- **最小充分深度**：分析到足以支撑下一步行动即可，不过度展开。
-- **简化表达但不删除逻辑**：压缩冗余措辞，保留判断链条与关键约束。
-- **只在真正阻塞时提问**：仅当缺失信息确实会导致错误结果时，提出一个决定性问题。
-- **被纠正时干净恢复**：接受纠正后直接调整，不反复辩解或重述上下文。
-- **渐进式上下文管理**：按需引入信息，避免一次性堆叠无关内容。
+- 先给答案、命令、补丁、建议或一个阻塞问题；
+- 在猜测前检查最窄相关状态；
+- 用最小但完整的深度支撑正确行动；
+- 简化表达，但不删除假设、判断标准、因果链、机制、边界、验证步骤或失败信号；
+- 只在真正阻塞时提出一个决定性问题；
+- 被纠正时替换错误假设，而不是辩解或过度道歉；
+- 保持常驻上下文短小，只在任务需要时加载更深参考。
 
-## 适用对象
+## 包含内容
 
-适用于支持以下任一指令入口的 agent 或 assistant：
+- `AGENTS.md` 是唯一标准的常驻通用 profile。
+- `precision-guided-clarity/SKILL.md` 是可选路由索引，供兼容的 reference 或 skill 系统使用。
+- `precision-guided-clarity/references/*.md` 提供更深的歧义处理、推理输出、技术执行、工具使用和多轮恢复指导。
+- `docs/` 提供通用安装、上下文管理与 conformance 说明。
 
-- 全局指令；
-- 项目指令；
-- `AGENTS.md` 风格的指令文件；
-- 自定义系统提示词或 profile；
-- skill 风格的按需指令包。
+本仓库不发布客户端专用配置文件、运行时代码、安装 hook、自动化脚本或自定义 Release 压缩包。
 
-本项目不绑定单一 agent 运行时。仓库中的 Codex 文件只是可选适配示例。
+## 通用安装
 
-## 通用安装方式
+把 `AGENTS.md` 的内容复制或合并到你的 agent 已支持的指令入口。
 
-把 `AGENTS.md` 的内容放进你的 agent 全局或项目级指令入口。
-
-推荐约束：
+推荐集成约束：
 
 ```text
 将 Precision-Guided Clarity 作为底层操作风格加载。不要让它覆盖更高优先级的安全、用户、项目或任务专用指令。
 ```
 
-如果你的 agent 支持 `AGENTS.md`，把根目录 `AGENTS.md` 放到该 agent 期望的全局或项目指令位置即可。
+如果你的 agent 支持项目指令文件，把根目录 `AGENTS.md` 放到或合并到该 agent 期望的项目级或全局指令位置。
 
-## Codex 适配安装
+## 可选参考包
 
-对于 Codex CLI 和标准 Codex 运行，一个常见路径是 `~/.codex/AGENTS.md`：
+`precision-guided-clarity/` 目录是可选的。只有当你的 agent 能读取本地参考资料或按需加载 skill 时，才需要使用它。
 
-```bash
-set -e
-mkdir -p "${HOME}/.codex"
-if [ -f "${HOME}/.codex/AGENTS.md" ]; then
-  cp "${HOME}/.codex/AGENTS.md" "${HOME}/.codex/AGENTS.md.bak.$(date +%Y%m%d%H%M%S)"
-fi
-cp AGENTS.md "${HOME}/.codex/AGENTS.md"
+对于兼容系统，把该目录复制到该系统用于 reference pack 或 skill 的位置。如果你移动到不同路径，请更新 `AGENTS.md` 中的 reference 路径，或保持相同的相对目录结构。
+
+reference pack 不是主载体。普通行为应来自 `AGENTS.md`；只有任务触发更深流程时才加载参考文件。
+
+## 更新或移除
+
+PGC 使用可见 marker，便于更新或删除。删除以下标记之间的内容即可：
+
+```text
+<!-- BEGIN precision-guided-clarity v1.1.0 -->
+<!-- END precision-guided-clarity v1.1.0 -->
 ```
 
-如果你已有全局指令文件，建议手动合并带有 BEGIN/END 标记的 PGC 段落，而不是直接覆盖。
+如果安装了可选 reference pack，删除你复制到目标位置的 `precision-guided-clarity` 目录。
 
-如果你的 Codex Desktop 已经使用 `model_instructions_file`，可以追加 Codex Desktop 适配片段：
-
-```bash
-set -e
-DESKTOP_INSTRUCTIONS="${HOME}/.codex/desktop-instructions.md"
-cp "${DESKTOP_INSTRUCTIONS}" "${DESKTOP_INSTRUCTIONS}.bak.$(date +%Y%m%d%H%M%S)"
-cat profiles/codex-desktop-instructions.append.md >> "${DESKTOP_INSTRUCTIONS}"
-```
-
-`profiles/codex-config.profile.toml` 是可选 Codex 配置片段，用于需要命名 profile 的用户。
-
-## 可选 skill 兼容
-
-`precision-guided-clarity/` 目录是可选的 skill 风格产物，供支持按需 skill 或可复用指令包的 agent 使用。
-
-对于 Codex 兼容的 skill 目录：
-
-```bash
-set -e
-mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
-rm -rf "${CODEX_HOME:-$HOME/.codex}/skills/precision-guided-clarity"
-cp -R precision-guided-clarity "${CODEX_HOME:-$HOME/.codex}/skills/"
-```
-
-skill 不是主载体。只有在需要逻辑保真改写、歧义分解、纠错恢复、上下文压缩、有状态执行或发布级文档处理时，才需要显式使用它。
-
-## 卸载
-
-从你安装它的指令文件中删除带标记的 PGC 段落即可。若安装了可选 Codex profile，从 Codex 配置中删除 `[profiles.pgc]`。若安装了可选 skill，删除复制进去的 `precision-guided-clarity` skill 目录。
+修改全局或项目级指令后，重启 agent 或开启新会话。
 
 ## 项目结构
 
 ```text
-AGENTS.md                                      # 标准全局操作风格 profile
-profiles/codex-AGENTS.override.md             # 可选 Codex override 适配文件
-profiles/codex-desktop-instructions.append.md # 可选 Codex Desktop 追加片段
-profiles/codex-config.profile.toml            # 可选 Codex 配置片段
-docs/install.md                               # 通用安装和适配说明
-docs/context-management.md                    # 常驻上下文与按需深度的边界
-precision-guided-clarity/                     # 可选 skill 兼容目录
+AGENTS.md                          # 标准常驻通用 profile
+README.md                          # 英文说明
+README.zh-CN.md                    # 简体中文说明
+SECURITY.md                        # 安全姿态与校验说明
+docs/install.md                    # 通用安装指南
+docs/context-management.md         # 常驻上下文与可选参考边界
+docs/conformance.md                # 手动行为检查
+precision-guided-clarity/          # 可选 reference pack
 ```
+
+## 分发方式
+
+以源码仓库作为分发形式。需要可复现性时，请使用 `git clone` 并校验 commit hash。
+
+本项目不提供自定义 zip、tar、checksum、安装器或可执行 Release 产物。
 
 ## 安全姿态
 
-- **仅指令文本**：仓库内不包含可执行代码、安装脚本或运行时 hook。
-- **无网络行为**：不在任何阶段拉取远程内容。
-- **无凭证**：不附带任何 API key、token 或账户信息。
-- **无预授权工具配置**：不会替你打开任何工具的自动执行权限。
-- **可审计**：所有文件均为纯文本，安装前可直接阅读全部内容。
-
-启用本 profile 不会改变 agent 的工具权限，也不替代你的工具沙箱与权限策略。
+本项目仅包含指令文本。仓库内没有运行时代码、安装 hook、远程拉取逻辑、内置凭证或预授权工具配置。
 
 ## 许可证
 
-MIT License。详见 `LICENSE` 文件。
+MIT License。详见 `LICENSE`。

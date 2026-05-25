@@ -1,77 +1,45 @@
 # Technical Execution
 
-Use for code, commands, files, deployment, automation, debugging, servers, CI/CD, migrations, or scripts.
+Load when the task involves commands, file changes, code edits, builds, scripts, debugging, deployment, CI, migrations, or operational steps.
 
-## Contract
+## Primary defaults
 
-Unless the user asks for explanation only, provide:
+- Inspect before modifying.
+- Make the smallest change that satisfies the requirement.
+- Validate after every state-changing step.
 
-1. Relevant environment assumptions
-2. One complete command group, patch, or script
-3. Validation command or expected output
-4. Most likely failure point
-5. Rollback or recovery note when the change is hard to reverse
+## Do
 
-## Inspect First
+- Read existing code, config, logs, or generated artifacts before proposing changes when they determine correctness.
+- Quote exact file paths, command names, identifiers, and observed errors.
+- Provide one complete command group, patch, or script when execution is requested.
+- Include rollback or recovery for destructive or hard-to-reverse actions.
+- Surface errors verbatim when they affect diagnosis.
 
-When local tools are available and the task depends on actual machine state, inspect the relevant state before final commands or edits. This is a baseline rule from `SKILL.md`, not optional extra guidance.
+## Avoid
 
-Check only what matters:
+- Speculative edits without reading the target.
+- Bundling unrelated changes.
+- Suppressing or rewriting diagnostic output.
+- Assuming environment state such as versions, flags, services, ports, or network access.
+- Running broad scans when a focused check answers the question.
 
-- target files and current directory
-- installed tool versions
-- active config paths
-- service status or ports
-- existing generated artifacts
+## Procedure
 
-Do not run broad scans when a narrow check is enough.
+1. Inspect the relevant file, config, command output, version, log, or service state.
+2. State the intended change and expected effect.
+3. Apply the minimal change or provide the minimal complete command group.
+4. Validate with the smallest relevant build, test, lint, health check, or artifact inspection.
+5. If validation fails, capture the exact error and choose one retry, rollback, or escalation path.
 
-For cross-tool inspection, current-fact verification, file state discovery, command results, generated artifacts, service checks, validation workflow, or operational anchors, use `references/tool-action-strategy.md`.
+## Output pattern
 
-If a task is both technical and high risk, inspect state first. After inspection, preserve the decision criterion, rollback boundary, access boundary, migration consequence, or evidence limitation that still determines the answer.
+- What was inspected.
+- What changed or what command to run.
+- How to validate.
+- Result, likely failure point, or remaining blocker.
 
-## Command Style
+## Stop when
 
-Prefer one complete executable block:
-
-```bash
-set -e
-# commands here
-```
-
-over scattered one-line fragments.
-
-For destructive or hard-to-reverse file operations, show the target path clearly and include a verification or recovery step.
-
-## Missing Information
-
-Ask before execution only when missing information would cause wrong environment changes, overwritten files, wrong target selection, or non-recoverable output.
-
-Otherwise assume a reasonable default, state it, and provide a usable command.
-
-## Validation Examples
-
-Choose validation based on the task:
-
-```bash
-command -v tool
-tool --version
-curl -I http://localhost:PORT
-python -m pytest
-npm test
-service status name
-```
-
-For file edits, verify by reading the changed file, running the relevant test, or checking the generated artifact.
-
-## Failure and Recovery
-
-Name the most likely failure point before the user hits it.
-
-Common causes by category - environment, data state, permissions:
-
-- Environment: wrong runtime version, wrong working directory, missing environment variable, port conflict
-- Data state: stale generated artifact, migration applied to the wrong database
-- Permissions: missing file, directory, network, or account permission
-
-If the change is risky, include a rollback, backup, dry run, or restore path.
+- The change is applied and validated, or
+- a blocking failure is reported with exact error and a safe next option.
