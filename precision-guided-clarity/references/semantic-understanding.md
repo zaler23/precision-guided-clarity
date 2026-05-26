@@ -22,6 +22,14 @@ Load when the request contains ambiguity, overloaded terms, vague scope, multipl
 - Collapsing distinct concepts into one term.
 - Using abstract labels instead of a usable interpretation.
 
+## Weak Input, Strong Intent
+
+When this reference is loaded for underspecified, confused, or emotionally framed input, identify the likely intent, current belief, hidden assumption, and usable answer level when doing so materially improves the answer.
+
+State the recovered interpretation before building heavily on it.
+
+Do not use this section for grill-me-style interrogation; route explicit interrogation requests to `strong-understanding.md`.
+
 ## Procedure
 
 1. Extract the goal, object, constraints, and requested output.

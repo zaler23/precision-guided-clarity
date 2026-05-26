@@ -1,6 +1,6 @@
 # Context management
 
-PGC v1.1.0 separates always-on behavior from optional depth.
+PGC v1.2.0 separates always-on behavior from optional depth.
 
 ## Always loaded
 
@@ -23,6 +23,7 @@ This always-loaded layer should stay short enough to audit quickly and to coexis
 Use the optional `precision-guided-clarity` reference pack only when the task needs deeper procedure, such as:
 
 - ambiguity triage or semantic mismatch;
+- strong understanding for underspecified or confused input where recovered intent would materially change the answer, or explicit grill-me / exploratory interrogation requests;
 - concept precision, decision criteria, or output shape;
 - technical execution with commands, files, deployment, CI, migrations, or scripts;
 - tool choice, current-state inspection, or validation evidence;
@@ -32,6 +33,6 @@ Load one targeted reference by default. Load a second only when the task spans t
 
 ## Rule
 
-Make the light behavior automatic and the heavy behavior available.
+Make the light behavior automatic and the heavy behavior available. Strong understanding should shape normal answers lightly when useful; deep interrogation or teaching remains opt-in or narrowly reference-triggered.
 
 Do not copy long reference content into the always-loaded profile. Doing so increases every session's context cost and weakens the purpose of profile-first design.

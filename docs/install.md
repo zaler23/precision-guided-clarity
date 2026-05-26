@@ -32,6 +32,7 @@ precision-guided-clarity/
   SKILL.md
   references/
     semantic-understanding.md
+    strong-understanding.md
     reasoning-and-output.md
     technical-execution.md
     tool-action-strategy.md
@@ -49,8 +50,8 @@ Start a new session and ask the agent to summarize the active PGC defaults. A co
 PGC uses visible marker blocks so it can be updated or removed without guessing. Remove the block between:
 
 ```text
-<!-- BEGIN precision-guided-clarity v1.1.0 -->
-<!-- END precision-guided-clarity v1.1.0 -->
+<!-- BEGIN precision-guided-clarity v1.2.0 -->
+<!-- END precision-guided-clarity v1.2.0 -->
 ```
 
 If you installed the optional reference pack, remove the copied `precision-guided-clarity` directory from the location where you placed it.

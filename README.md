@@ -4,7 +4,9 @@
 
 Precision-Guided Clarity is a generic instruction profile for AI agents. Copy or merge it into any compatible agent instruction surface, such as a system prompt, project instructions, `AGENTS.md`-style file, or custom instruction field. It is not a client-specific adapter package.
 
-**Version:** 1.1.0  
+PGC is designed not only to produce clear answers, but to support strong understanding: answers should help clarify intent, ground important claims, and improve judgment without turning ordinary tasks into lessons.
+
+**Version:** 1.2.0  
 **Primary artifact:** `AGENTS.md`  
 **Optional artifact:** `precision-guided-clarity/` reference pack for compatible on-demand skill or reference systems
 
@@ -16,6 +18,7 @@ PGC prioritizes useful agent behavior first, then keeps the implementation compa
 - inspect the narrowest relevant state before guessing;
 - use the smallest complete answer that preserves correctness;
 - simplify wording without deleting assumptions, criteria, causal links, mechanisms, caveats, validation steps, or failure signals;
+- shape answers so important claims are grounded in concrete structure, boundaries, decision rules, or failure modes when useful;
 - ask one decisive clarification question only when blocked;
 - recover from corrections by replacing the broken assumption;
 - keep always-loaded context small and load deeper references only when needed.
@@ -24,7 +27,7 @@ PGC prioritizes useful agent behavior first, then keeps the implementation compa
 
 - `AGENTS.md` is the canonical always-on profile.
 - `precision-guided-clarity/SKILL.md` is an optional routing index for compatible reference or skill systems.
-- `precision-guided-clarity/references/*.md` contains deeper guidance for ambiguity handling, reasoning, technical execution, tool-mediated work, and multi-turn recovery.
+- `precision-guided-clarity/references/*.md` contains deeper guidance for ambiguity handling, strong understanding, reasoning, technical execution, tool-mediated work, and multi-turn recovery.
 - `docs/` contains generic installation, context-management, and conformance notes.
 
 This repository does not ship client-specific configuration files, runtime code, install hooks, automation scripts, or custom release archives.
@@ -54,8 +57,8 @@ The reference pack is not the primary carrier. Normal behavior should come from 
 PGC uses visible marker blocks so it can be updated or removed without guessing. Remove the block between:
 
 ```text
-<!-- BEGIN precision-guided-clarity v1.1.0 -->
-<!-- END precision-guided-clarity v1.1.0 -->
+<!-- BEGIN precision-guided-clarity v1.2.0 -->
+<!-- END precision-guided-clarity v1.2.0 -->
 ```
 
 If you installed the optional reference pack, remove the copied `precision-guided-clarity` directory from the location where you placed it.

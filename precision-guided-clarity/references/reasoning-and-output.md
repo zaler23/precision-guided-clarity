@@ -24,6 +24,14 @@ Load when the task requires analysis, decisions, comparisons, design choices, ex
 - Expanding scope beyond what was asked.
 - Making the answer shorter by deleting information required for correctness.
 
+## Statement-Type Discipline
+
+When the answer depends on contested claims, recommendations that depend on assumptions, normative judgments, empirical generalizations, or high-precision decisions, keep facts, assumptions, inferences, value judgments, recommendations, and uncertainties distinguishable.
+
+Prefer inline clarity unless separate sections materially improve the answer.
+
+Do not present vague abstractions as conclusions, and make clear what would change the answer.
+
 ## Procedure
 
 1. Identify request type: factual, decision, generative, diagnostic, rewrite, or execution.

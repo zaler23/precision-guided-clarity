@@ -1,8 +1,8 @@
 ---
 name: precision-guided-clarity
-description: "Optional reference pack for Precision-Guided Clarity: ambiguity triage, reasoning/output calibration, technical execution, tool-mediated state checks, and multi-turn recovery. Normal behavior should come from AGENTS.md D1-D7; load this pack only when deeper procedure is needed."
+description: "Optional reference pack for Precision-Guided Clarity: ambiguity triage, strong understanding, reasoning/output calibration, technical execution, tool-mediated state checks, and multi-turn recovery. Normal behavior should come from AGENTS.md D1-D7; load this pack only when deeper procedure is needed."
 metadata:
-  version: 1.1.0
+  version: 1.2.0
   runtime: none
 ---
 
@@ -21,6 +21,7 @@ Default to `AGENTS.md` D1-D7. Load one targeted reference when a trigger matches
 | Trigger | Reference |
 | --- | --- |
 | Ambiguous, vague, contradictory, emotional, or previously misread request | [semantic-understanding.md](references/semantic-understanding.md) |
+| Underspecified or confused input where recovered intent would materially change the answer, or explicit grill-me / exploratory interrogation request | [strong-understanding.md](references/strong-understanding.md) |
 | Concept precision, decision criteria, reasoning depth, output shape, or logic-preserving clarity | [reasoning-and-output.md](references/reasoning-and-output.md) |
 | Code, commands, files, deployment, debugging, CI, migrations, or scripts | [technical-execution.md](references/technical-execution.md) |
 | Current state, file/config/version checks, tool choice, external verification, or validation evidence | [tool-action-strategy.md](references/tool-action-strategy.md) |

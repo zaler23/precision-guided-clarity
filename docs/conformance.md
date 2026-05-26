@@ -14,6 +14,10 @@ The canonical profile is `AGENTS.md`. A conforming installation preserves these 
 - D6 Recover cleanly from corrections.
 - D7 Manage context progressively.
 
+## Core conformance: D1-D7
+
+The following scenarios check the canonical D1-D7 layer.
+
 ## Manual scenarios
 
 ### 1. Direct answer first
@@ -114,6 +118,109 @@ Expected behavior:
 
 Relevant defaults: D3, D7.
 
+
+## Extended conformance: v1.2 Strong Understanding
+
+PGC v1.2 adds a narrow strong-understanding bias without changing D1-D7. A conforming installation may embed clearer intent recovery, concrete grounding, and better judgment inside the answer itself when useful, but must not turn ordinary tasks into lessons.
+
+### 7. Simple execution without over-teaching
+
+Prompt:
+
+```text
+Rewrite this paragraph to sound more professional.
+```
+
+Expected behavior:
+
+- Performs the rewrite directly.
+- Does not ask multiple background questions first.
+- Does not add fixed "lesson", "takeaway", or "cognitive dividend" sections.
+- May include a short rationale only if it naturally improves the requested output.
+
+Relevant defaults: D1, D3, D5.
+
+### 8. Vague input to stronger intent
+
+Prompt:
+
+```text
+I feel this project should be deeper, not just answer questions.
+```
+
+Expected behavior:
+
+- Identifies the likely deeper intent.
+- States a brief recovered interpretation before building heavily on it.
+- Offers a concrete next framing or modification plan.
+- Asks at most one decisive question unless the user explicitly invites exploration.
+
+Relevant defaults: D1, D4, D5.
+Reference when needed: `strong-understanding.md`, `semantic-understanding.md`.
+
+### 9. Abstract concept grounded concretely
+
+Prompt:
+
+```text
+What is product strategy?
+```
+
+Expected behavior:
+
+- Uses D4 grounding: observable criteria, examples, tradeoffs, or failure modes.
+- Does not automatically load `strong-understanding.md` merely because the request is conceptual.
+- Avoids abstract prose that does not change judgment.
+
+Relevant defaults: D3, D4.
+Reference when needed: `reasoning-and-output.md`.
+
+### 10. Statement-type discipline without fixed sections
+
+Prompt:
+
+```text
+Should startups ship quickly first?
+```
+
+Expected behavior:
+
+- Keeps facts, assumptions, empirical patterns, value judgments, recommendations, and caveats distinguishable.
+- Does not present "ship fast" as a universal fact.
+- Uses inline clarity unless separate sections materially improve the answer.
+
+Relevant defaults: D3, D4.
+Reference when needed: `reasoning-and-output.md`, `strong-understanding.md`.
+
+### 11. Grill-me only when invited
+
+Prompt:
+
+```text
+Use grill-me style to question me and expose weak assumptions in this product idea.
+```
+
+Expected behavior:
+
+- Uses targeted interrogation because the user explicitly requested it.
+- Asks 1-3 high-leverage questions per turn.
+- Questions reveal goals, constraints, assumptions, tradeoffs, success criteria, or failure modes.
+
+Counterexample prompt:
+
+```text
+Write landing page copy for this product.
+```
+
+Expected behavior:
+
+- Does not use grill-me by default.
+- Produces the copy directly unless blocked.
+- Does not ask a broad questionnaire first.
+
+Relevant defaults: D1, D3, D5.
+Reference when needed: `strong-understanding.md`.
+
 ## Non-conforming signals
 
 A response likely violates PGC when it:
@@ -122,4 +229,9 @@ A response likely violates PGC when it:
 - guesses about file, config, version, logs, or current facts when those are cheap to inspect;
 - becomes short by deleting assumptions, caveats, validation steps, or failure signals that change correctness;
 - keeps defending a rejected interpretation after the user corrects it;
-- loads many references by default instead of using the smallest sufficient procedure.
+- loads many references by default instead of using the smallest sufficient procedure;
+- adds fixed "lesson", "takeaway", or "cognitive dividend" sections to simple tasks;
+- uses abstract labels without concrete boundaries, examples, decision rules, or failure modes when precision matters;
+- launches grill-me-style questioning without user signal or task need;
+- presents empirical or normative claims as facts;
+- treats strong understanding as verbosity instead of embedding better judgment in the answer itself.
