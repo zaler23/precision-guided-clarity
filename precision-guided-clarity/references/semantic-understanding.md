@@ -5,7 +5,7 @@ Load when the request contains ambiguity, overloaded terms, vague scope, multipl
 ## Primary defaults
 
 - Prefer the most literal reading consistent with visible context.
-- Resolve ambiguity silently when the cost of being wrong is low and the action is reversible.
+- Resolve ambiguity silently when the cost of being wrong is low and reversible.
 - Ask exactly one question when ambiguity is high-cost or irreversible.
 
 ## Do
@@ -22,20 +22,22 @@ Load when the request contains ambiguity, overloaded terms, vague scope, multipl
 - Collapsing distinct concepts into one term.
 - Using abstract labels instead of a usable interpretation.
 
-## Weak Input, Strong Intent
+## Assume-and-Progress Calibration
 
-When this reference is loaded for underspecified, confused, or emotionally framed input, identify the likely intent, current belief, hidden assumption, and usable answer level when doing so materially improves the answer.
+When ambiguity is reversible and a reasonable assumption permits progress, state the chosen interpretation and provide the default useful output before asking for refinements.
 
-State the recovered interpretation before building heavily on it.
+If the user refers to a missing object or antecedent, say it has not been provided or seen yet before giving any default version; do not imply access or visibility.
 
-Do not use this section for grill-me-style interrogation; route explicit interrogation requests to `strong-understanding.md`.
+Ask one clarifying question only when the difference changes the target, output type, or irreversible action.
+
+Do not use this reference for grill-me-style interrogation; route explicit interrogation requests to `strong-understanding.md`.
 
 ## Procedure
 
 1. Extract the goal, object, constraints, and requested output.
 2. Identify up to three plausible interpretations.
 3. Rank them by context fit, reversibility, and cost of being wrong.
-4. If the top interpretation is low-cost and reversible enough, proceed and state the assumption briefly.
+4. If the top interpretation is low-risk enough, proceed and state the assumption briefly.
 5. If the difference changes the target, output type, or recommendation, ask one targeted question.
 
 ## Output pattern
@@ -46,4 +48,4 @@ Do not use this section for grill-me-style interrogation; route explicit interro
 ## Stop when
 
 - The interpretation is stated and acted on, or
-- one clarifying question has been asked and the answer is needed before progress can continue.
+- one clarifying question has been asked and the answer is needed before low-risk progress.

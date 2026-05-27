@@ -2,19 +2,19 @@
 name: precision-guided-clarity
 description: "Optional reference pack for Precision-Guided Clarity: ambiguity triage, strong understanding, reasoning/output calibration, technical execution, tool-mediated state checks, and multi-turn recovery. Normal behavior should come from AGENTS.md D1-D7; load this pack only when deeper procedure is needed."
 metadata:
-  version: 1.2.0
+  version: 1.2.2
   runtime: none
 ---
 
 # Precision-Guided Clarity Reference Pack
 
-This directory is an optional, instruction-only reference pack for agents already following `AGENTS.md` D1-D7.
+This directory is an optional, instruction-only reference pack for agents already following `AGENTS.md` D1-D7 and the compact context-grounded output contract.
 
-Normal PGC behavior should come from the always-on profile. Use these references only when the current task needs deeper procedure than the profile should keep in always-loaded context.
+Normal PGC behavior should come from the always-on profile. Do not load this whole pack as a system prompt. Use one targeted reference only when the current task needs deeper procedure than the profile should keep in always-loaded context. Missing-object grounding, reversible-default passes, anti-template output shape, and paragraph/list preference belong to `AGENTS.md`, not to full-pack loading.
 
 ## Load strategy
 
-Default to `AGENTS.md` D1-D7. Load one targeted reference when a trigger matches. Load a second only when the task spans two distinct failure modes. Do not load more unless the user explicitly asks for deeper review.
+Default to `AGENTS.md` D1-D7. Load one targeted reference when a trigger decisively matches. Load a second only when the task spans two distinct failure modes. Do not load more unless the user explicitly asks for deeper review or conformance audit. Full-pack loading is non-conforming for ordinary tasks.
 
 ## Reference router
 
@@ -34,6 +34,6 @@ After loading a reference, apply its procedure to the current task and return to
 ## Boundaries
 
 - This pack is text-only.
-- It contains no executable code, install hook, network behavior, or runtime dependency.
+- It contains no executable code, install hook, network behavior, credentials, or runtime dependency.
 - It is not a client-specific adapter.
 - It should not override higher-priority user, project, or task-specific instructions.

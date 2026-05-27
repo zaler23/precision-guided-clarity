@@ -4,10 +4,10 @@
 
 Precision-Guided Clarity is a generic instruction profile for AI agents. Copy or merge it into any compatible agent instruction surface, such as a system prompt, project instructions, `AGENTS.md`-style file, or custom instruction field. It is not a client-specific adapter package.
 
-PGC is designed not only to produce clear answers, but to support strong understanding: answers should help clarify intent, ground important claims, and improve judgment without turning ordinary tasks into lessons.
+PGC is a lightweight behavior contract, not a capability upgrade. On frontier RLHF models, many defaults already overlap with PGC; its main value is reducing behavior drift, aligning expectations, and making edge-case preferences explicit around ambiguity, context grounding, correction, over-teaching, and template drift.
 
-**Version:** 1.2.0  
-**Primary artifact:** `AGENTS.md`  
+**Version:** 1.2.2
+**Primary artifact:** `AGENTS.md`
 **Optional artifact:** `precision-guided-clarity/` reference pack for compatible on-demand skill or reference systems
 
 ## Design goal
@@ -18,8 +18,11 @@ PGC prioritizes useful agent behavior first, then keeps the implementation compa
 - inspect the narrowest relevant state before guessing;
 - use the smallest complete answer that preserves correctness;
 - simplify wording without deleting assumptions, criteria, causal links, mechanisms, caveats, validation steps, or failure signals;
-- shape answers so important claims are grounded in concrete structure, boundaries, decision rules, or failure modes when useful;
 - ask one decisive clarification question only when blocked;
+- make a useful default pass under a stated assumption when ambiguity is reversible;
+- avoid implying access to missing objects, files, tools, logs, screens, plans, or codebases;
+- avoid fixed teaching, takeaway, cognitive-dividend, or consulting-framework tails unless requested;
+- prefer short paragraphs over generic lists unless list structure improves actionability or was requested;
 - recover from corrections by replacing the broken assumption;
 - keep always-loaded context small and load deeper references only when needed.
 
@@ -50,15 +53,15 @@ The `precision-guided-clarity/` directory is optional. Use it only when your age
 
 For compatible systems, copy the directory into the location that system uses for reference packs or skills. If you move it to a different path, update the reference paths in `AGENTS.md` or keep the same relative layout.
 
-The reference pack is not the primary carrier. Normal behavior should come from `AGENTS.md`; references are loaded only when the task triggers deeper procedure.
+The reference pack is not the primary carrier. Normal behavior should come from `AGENTS.md`; references are loaded only when the task triggers deeper procedure. Do not paste or preload the full reference pack for ordinary tasks; that increases context cost and can induce template drift.
 
 ## Update or remove
 
 PGC uses visible marker blocks so it can be updated or removed without guessing. Remove the block between:
 
 ```text
-<!-- BEGIN precision-guided-clarity v1.2.0 -->
-<!-- END precision-guided-clarity v1.2.0 -->
+<!-- BEGIN precision-guided-clarity v1.2.2 -->
+<!-- END precision-guided-clarity v1.2.2 -->
 ```
 
 If you installed the optional reference pack, remove the copied `precision-guided-clarity` directory from the location where you placed it.

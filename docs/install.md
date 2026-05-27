@@ -9,7 +9,7 @@ Copy or merge the contents of `AGENTS.md` into the instruction surface your agen
 Use this integration rule:
 
 ```text
-Load the Precision-Guided Clarity profile as a low-level operating style. Do not let it override higher-priority user, project, or task-specific instructions.
+Load AGENTS.md as the always-on Precision-Guided Clarity profile. Do not preload the optional reference pack. Load one targeted reference only when a narrow trigger matches. Do not let PGC override higher-priority user, project, or task-specific instructions.
 ```
 
 Compatible instruction surfaces may include:
@@ -43,15 +43,15 @@ If your agent stores references elsewhere, copy the directory to that location a
 
 ## Verify installation
 
-Start a new session and ask the agent to summarize the active PGC defaults. A correct installation should mention D1-D7 and should not claim to have new tool permissions, runtime hooks, or automatic network behavior.
+Start a new session and ask the agent to summarize the active PGC defaults. A correct installation should mention D1-D7, context-grounded output behavior, and should not claim to have new tool permissions, runtime hooks, or automatic network behavior.
 
 ## Update or uninstall
 
 PGC uses visible marker blocks so it can be updated or removed without guessing. Remove the block between:
 
 ```text
-<!-- BEGIN precision-guided-clarity v1.2.0 -->
-<!-- END precision-guided-clarity v1.2.0 -->
+<!-- BEGIN precision-guided-clarity v1.2.2 -->
+<!-- END precision-guided-clarity v1.2.2 -->
 ```
 
 If you installed the optional reference pack, remove the copied `precision-guided-clarity` directory from the location where you placed it.

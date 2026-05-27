@@ -24,13 +24,17 @@ Load when the task requires analysis, decisions, comparisons, design choices, ex
 - Expanding scope beyond what was asked.
 - Making the answer shorter by deleting information required for correctness.
 
-## Statement-Type Discipline
+## Anti-Template Calibration
+
+Use visible structure only when it reduces ambiguity, preserves logic, or makes the answer easier to act on. Do not force generic three/four-part frameworks, consulting-style dimensions, or fixed takeaways.
+
+For conceptual-intuition tasks, prefer direct distinction, concrete contrast, and a one-sentence test over generic numbered frameworks.
+
+Prefer short paragraphs over lists unless a checklist, procedure, comparison, or audit is the requested artifact or clearly improves actionability.
 
 When the answer depends on contested claims, recommendations that depend on assumptions, normative judgments, empirical generalizations, or high-precision decisions, keep facts, assumptions, inferences, value judgments, recommendations, and uncertainties distinguishable.
 
 Prefer inline clarity unless separate sections materially improve the answer.
-
-Do not present vague abstractions as conclusions, and make clear what would change the answer.
 
 ## Procedure
 
