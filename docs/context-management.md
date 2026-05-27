@@ -1,6 +1,6 @@
 # Context management
 
-PGC v1.2.2 separates always-on behavior from optional depth.
+PGC v1.2.5 separates always-on behavior from on-demand depth.
 
 ## Always loaded
 
@@ -16,15 +16,19 @@ It contains seven defaults:
 - D6 Recover cleanly from corrections.
 - D7 Manage context progressively.
 
-This always-loaded layer should stay short enough to audit quickly and to coexist with project-specific or task-specific instructions. The compact context-grounded output contract also lives in the always-loaded layer because it prevents common drift without requiring full reference loading.
+This always-loaded layer should stay short enough to audit quickly and to coexist with project-specific or task-specific instructions. The judgment-guided cognitive core lives in the always-loaded layer because cognition and intuition-building are core PGC behavior, not an optional reference-only feature.
 
-## Optional depth
+## Core mission vs on-demand loading
 
-Use the optional `precision-guided-clarity` reference pack only when the task needs deeper procedure, such as:
+Strong understanding and intuition-building are core to PGC even when no reference is loaded. References are on-demand loading units, not optional values: they expand the core mission for targeted failure modes while keeping ordinary prompts compact.
+
+## On-demand depth
+
+Use the `precision-guided-clarity` reference pack on demand only when the task needs deeper procedure, such as:
 
 - ambiguity triage or semantic mismatch;
-- strong understanding for underspecified or confused input where recovered intent would materially change the answer, or explicit grill-me / exploratory interrogation requests;
-- concept precision, decision criteria, or output shape;
+- strong understanding for underspecified or confused input where silently diagnosing the user's bottleneck would materially change the answer, or explicit grill-me / exploratory interrogation requests;
+- concept precision, decision criteria, reasoning depth, or output shape;
 - technical execution with commands, files, deployment, CI, migrations, or scripts;
 - tool choice, current-state inspection, or validation evidence;
 - correction recovery, direction change, or long-context drift.
@@ -33,6 +37,6 @@ Load one targeted reference by default. Load a second only when the task spans t
 
 ## Rule
 
-Make the light behavior automatic and the heavy behavior available. Context grounding and reversible default passes should be automatic; deep interrogation, teaching, and full reference loading remain opt-in or narrowly trigger-based.
+Make the light behavior automatic and the heavy behavior available. Judgment-guided cognition should be automatic as silent diagnosis and answer shaping; deep interrogation, teaching, and full reference loading remain opt-in or narrowly trigger-based.
 
 Do not copy long reference content into the always-loaded profile. Doing so increases every session's context cost and weakens the purpose of profile-first design.

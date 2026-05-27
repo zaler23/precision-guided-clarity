@@ -1,27 +1,27 @@
 ---
 name: precision-guided-clarity
-description: "Optional reference pack for Precision-Guided Clarity: ambiguity triage, strong understanding, reasoning/output calibration, technical execution, tool-mediated state checks, and multi-turn recovery. Normal behavior should come from AGENTS.md D1-D7; load this pack only when deeper procedure is needed."
+description: "On-demand core reference pack for Precision-Guided Clarity: ambiguity triage, strong understanding, reasoning/output calibration, technical execution, tool-mediated state checks, and multi-turn recovery. Normal behavior should come from AGENTS.md silent-diagnosis judgment-guided cognitive core and D1-D7; load this pack only when deeper procedure is needed."
 metadata:
-  version: 1.2.2
+  version: 1.2.5
   runtime: none
 ---
 
 # Precision-Guided Clarity Reference Pack
 
-This directory is an optional, instruction-only reference pack for agents already following `AGENTS.md` D1-D7 and the compact context-grounded output contract.
+This directory is an on-demand, instruction-only core reference pack for agents already following `AGENTS.md` judgment-guided cognitive core and D1-D7.
 
-Normal PGC behavior should come from the always-on profile. Do not load this whole pack as a system prompt. Use one targeted reference only when the current task needs deeper procedure than the profile should keep in always-loaded context. Missing-object grounding, reversible-default passes, anti-template output shape, and paragraph/list preference belong to `AGENTS.md`, not to full-pack loading.
+Normal PGC behavior, including cognition and intuition-building, should come from the always-on profile. Do not load this whole pack as a system prompt. Use one targeted reference only when the current task needs deeper procedure than the profile should keep in always-loaded context.
 
 ## Load strategy
 
-Default to `AGENTS.md` D1-D7. Load one targeted reference when a trigger decisively matches. Load a second only when the task spans two distinct failure modes. Do not load more unless the user explicitly asks for deeper review or conformance audit. Full-pack loading is non-conforming for ordinary tasks.
+Default to `AGENTS.md` judgment-guided core and D1-D7. Load one targeted reference when a trigger decisively matches. Load a second only when the task spans two distinct failure modes. Do not load more unless the user explicitly asks for deeper review or conformance audit. Full-pack loading is non-conforming for ordinary tasks.
 
 ## Reference router
 
 | Trigger | Reference |
 | --- | --- |
 | Ambiguous, vague, contradictory, emotional, or previously misread request | [semantic-understanding.md](references/semantic-understanding.md) |
-| Underspecified or confused input where recovered intent would materially change the answer, or explicit grill-me / exploratory interrogation request | [strong-understanding.md](references/strong-understanding.md) |
+| Underspecified or confused input where silently diagnosing the user's bottleneck would materially change the answer, or explicit grill-me / exploratory interrogation request | [strong-understanding.md](references/strong-understanding.md) |
 | Concept precision, decision criteria, reasoning depth, output shape, or logic-preserving clarity | [reasoning-and-output.md](references/reasoning-and-output.md) |
 | Code, commands, files, deployment, debugging, CI, migrations, or scripts | [technical-execution.md](references/technical-execution.md) |
 | Current state, file/config/version checks, tool choice, external verification, or validation evidence | [tool-action-strategy.md](references/tool-action-strategy.md) |
