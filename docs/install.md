@@ -9,7 +9,7 @@ Copy or merge the contents of `AGENTS.md` into the instruction surface your agen
 Use this integration rule:
 
 ```text
-Load the Precision-Guided Clarity profile as a low-level operating style. Do not let it override higher-priority safety, user, project, or task-specific instructions.
+Load the Precision-Guided Clarity profile as a low-level operating style. Do not let it override higher-priority user, project, or task-specific instructions.
 ```
 
 Compatible instruction surfaces may include:

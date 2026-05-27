@@ -22,7 +22,6 @@ Load when a task requires selecting tools, inspecting current state, verifying e
 - Chaining destructive actions without intermediate checks.
 - Using a powerful tool when a simpler one suffices.
 - Acting on stale assumptions about system state.
-- Exposing secrets, credentials, private keys, tokens, cookies, or unrelated personal data.
 
 ## Procedure
 
@@ -40,10 +39,10 @@ Load when a task requires selecting tools, inspecting current state, verifying e
 - Action taken or recommended.
 - Observed result.
 - Validation check and outcome.
-- Pending confirmation only when safe progress is blocked.
+- Pending confirmation only when progress is blocked.
 
 ## Stop when
 
 - The goal state is reached and validated, or
 - a required confirmation is pending, or
-- an error blocks safe continuation.
+- an error blocks continuation.

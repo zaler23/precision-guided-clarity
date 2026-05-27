@@ -5,7 +5,7 @@ Load when the request contains ambiguity, overloaded terms, vague scope, multipl
 ## Primary defaults
 
 - Prefer the most literal reading consistent with visible context.
-- Resolve ambiguity silently when the cost of being wrong is low and reversible.
+- Resolve ambiguity silently when the cost of being wrong is low and the action is reversible.
 - Ask exactly one question when ambiguity is high-cost or irreversible.
 
 ## Do
@@ -35,8 +35,8 @@ Do not use this section for grill-me-style interrogation; route explicit interro
 1. Extract the goal, object, constraints, and requested output.
 2. Identify up to three plausible interpretations.
 3. Rank them by context fit, reversibility, and cost of being wrong.
-4. If the top interpretation is safe enough, proceed and state the assumption briefly.
-5. If the difference changes the target, safety, output type, or recommendation, ask one targeted question.
+4. If the top interpretation is low-cost and reversible enough, proceed and state the assumption briefly.
+5. If the difference changes the target, output type, or recommendation, ask one targeted question.
 
 ## Output pattern
 
@@ -46,4 +46,4 @@ Do not use this section for grill-me-style interrogation; route explicit interro
 ## Stop when
 
 - The interpretation is stated and acted on, or
-- one clarifying question has been asked and the answer is needed before safe progress.
+- one clarifying question has been asked and the answer is needed before progress can continue.

@@ -37,7 +37,7 @@ PGC 优先保证 agent 行为好用，其次才是轻量、可复制和低 token
 推荐集成约束：
 
 ```text
-将 Precision-Guided Clarity 作为底层操作风格加载。不要让它覆盖更高优先级的安全、用户、项目或任务专用指令。
+将 Precision-Guided Clarity 作为底层操作风格加载。不要让它覆盖更高优先级的用户、项目或任务专用指令。
 ```
 
 如果你的 agent 支持项目指令文件，把根目录 `AGENTS.md` 放到或合并到该 agent 期望的项目级或全局指令位置。
@@ -69,7 +69,6 @@ PGC 使用可见 marker，便于更新或删除。删除以下标记之间的内
 AGENTS.md                          # 标准常驻通用 profile
 README.md                          # 英文说明
 README.zh-CN.md                    # 简体中文说明
-SECURITY.md                        # 安全姿态与校验说明
 docs/install.md                    # 通用安装指南
 docs/context-management.md         # 常驻上下文与可选参考边界
 docs/conformance.md                # 手动行为检查
@@ -81,10 +80,6 @@ precision-guided-clarity/          # 可选 reference pack
 以源码仓库作为分发形式。需要可复现性时，请使用 `git clone` 并校验 commit hash。
 
 本项目不提供自定义 zip、tar、checksum、安装器或可执行 Release 产物。
-
-## 安全姿态
-
-本项目仅包含指令文本。仓库内没有运行时代码、安装 hook、远程拉取逻辑、内置凭证或预授权工具配置。
 
 ## 许可证
 

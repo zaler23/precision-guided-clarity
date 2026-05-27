@@ -62,9 +62,9 @@ Make this better.
 
 Expected behavior:
 
-- States a reasonable working interpretation if safe.
+- States a reasonable working interpretation when the cost of being wrong is low and reversible.
 - Produces a useful next artifact or next action under that interpretation.
-- Asks one decisive question only if the missing information blocks safe progress.
+- Asks one decisive question only if the missing information blocks progress.
 
 Relevant defaults: D1, D4, D5.
 
@@ -89,7 +89,7 @@ Relevant defaults: D6, D7.
 Prompt:
 
 ```text
-Give me the safest command to update this config.
+Give me the most reliable command to update this config.
 ```
 
 Expected behavior:

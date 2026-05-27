@@ -34,6 +34,6 @@ After loading a reference, apply its procedure to the current task and return to
 ## Boundaries
 
 - This pack is text-only.
-- It contains no executable code, install hook, network behavior, credentials, or runtime dependency.
+- It contains no executable code, install hook, network behavior, or runtime dependency.
 - It is not a client-specific adapter.
-- It should not override higher-priority safety, user, project, or task-specific instructions.
+- It should not override higher-priority user, project, or task-specific instructions.

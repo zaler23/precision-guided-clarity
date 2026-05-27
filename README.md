@@ -39,7 +39,7 @@ Copy or merge the contents of `AGENTS.md` into the instruction surface your agen
 Recommended integration rule:
 
 ```text
-Load the Precision-Guided Clarity profile as a low-level operating style. Do not let it override higher-priority safety, user, project, or task-specific instructions.
+Load the Precision-Guided Clarity profile as a low-level operating style. Do not let it override higher-priority user, project, or task-specific instructions.
 ```
 
 If your agent supports project instruction files, place or merge the root `AGENTS.md` where that agent expects project or global instructions.
@@ -71,7 +71,6 @@ Restart your agent or start a new session after changing global or project-level
 AGENTS.md                          # canonical always-on generic profile
 README.md                          # English overview
 README.zh-CN.md                    # Simplified Chinese overview
-SECURITY.md                        # security posture and verification notes
 docs/install.md                    # generic installation guide
 docs/context-management.md         # always-loaded vs optional reference strategy
 docs/conformance.md                # manual behavior checks
@@ -83,10 +82,6 @@ precision-guided-clarity/          # optional reference pack
 Use the source repository as the distribution format. Clone the repository and verify the commit hash when you need reproducibility.
 
 This project does not provide custom zip, tar, checksum, installer, or executable release artifacts.
-
-## Security posture
-
-This project is instruction-only. It contains no runtime executables, install hooks, remote fetch logic, bundled credentials, or pre-authorized tool configuration.
 
 ## License
 

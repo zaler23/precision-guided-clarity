@@ -42,4 +42,4 @@ Load when the task involves commands, file changes, code edits, builds, scripts,
 ## Stop when
 
 - The change is applied and validated, or
-- a blocking failure is reported with exact error and a safe next option.
+- a blocking failure is reported with exact error and a bounded next option.
