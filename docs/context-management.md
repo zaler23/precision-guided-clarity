@@ -1,42 +1,35 @@
 # Context management
 
-PGC v1.2.5 separates always-on behavior from on-demand depth.
+PGC v1.4.0 uses a single-core runtime profile.
 
-## Always loaded
+## Runtime context
 
-The root `AGENTS.md` is the canonical always-loaded PGC profile. If your agent uses a different instruction surface, copy or merge the same content there.
+Use `AGENTS.md` as the complete PGC instruction surface. If your agent uses another instruction location, copy or merge the same content there.
 
-It contains seven defaults:
+The runtime core contains:
 
+- Minimal Cognitive Core.
 - D1 Direct output first.
 - D2 Inspect narrow state before guessing.
 - D3 Use minimal sufficient depth.
 - D4 Preserve logic while simplifying wording.
 - D5 Ask one decisive question only when blocked.
 - D6 Recover cleanly from corrections.
-- D7 Manage context progressively.
+- D7 Keep the profile compact.
+- Behavior Anchor.
 
-This always-loaded layer should stay short enough to audit quickly and to coexist with project-specific or task-specific instructions. The judgment-guided cognitive core lives in the always-loaded layer because cognition and intuition-building are core PGC behavior, not an optional reference-only feature.
+## No PGC routing layer
 
-## Core mission vs on-demand loading
+Do not split requests into separate PGC modes, model branches, or reference-loading paths. Do not preload the supplemental appendices for ordinary tasks.
 
-Strong understanding and intuition-building are core to PGC even when no reference is loaded. References are on-demand loading units, not optional values: they expand the core mission for targeted failure modes while keeping ordinary prompts compact.
+This is intentional: recent testing showed that heavier loading and routing can increase cost, template drift, clarification loops, and consulting-style structure. PGC should stay as a small always-on core.
 
-## On-demand depth
+## Supplemental files
 
-Use the `precision-guided-clarity` reference pack on demand only when the task needs deeper procedure, such as:
+`precision-guided-clarity/` and `docs/` are useful for maintainers, audits, and explicit user inspection. They are not required for normal answers.
 
-- ambiguity triage or semantic mismatch;
-- strong understanding for underspecified or confused input where silently diagnosing the user's bottleneck would materially change the answer, or explicit grill-me / exploratory interrogation requests;
-- concept precision, decision criteria, reasoning depth, or output shape;
-- technical execution with commands, files, deployment, CI, migrations, or scripts;
-- tool choice, current-state inspection, or validation evidence;
-- correction recovery, direction change, or long-context drift.
+If a host system exposes those files automatically, treat them as background documentation. Do not let them become another prompt layer unless the user explicitly asks for a PGC audit, comparison, or documentation task.
 
-Load one targeted reference by default. Load a second only when the task spans two distinct failure modes. Do not load more unless the user explicitly asks for deeper review or conformance audit. Do not preload the full pack for ordinary tasks.
+## Practical rule
 
-## Rule
-
-Make the light behavior automatic and the heavy behavior available. Judgment-guided cognition should be automatic as silent diagnosis and answer shaping; deep interrogation, teaching, and full reference loading remain opt-in or narrowly trigger-based.
-
-Do not copy long reference content into the always-loaded profile. Doing so increases every session's context cost and weakens the purpose of profile-first design.
+Make the light behavior automatic. Keep everything else documentary.

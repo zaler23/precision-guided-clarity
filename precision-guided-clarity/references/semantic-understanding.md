@@ -1,6 +1,6 @@
 # Semantic Understanding
 
-Load when the request contains ambiguity, overloaded terms, vague scope, multiple plausible interpretations, emotional framing, or domain-specific jargon. It supports PGC's judgment-guided cognitive core by recovering what the user likely means without turning recovery into a lesson or broad interrogation.
+Appendix purpose: explain ambiguity, overloaded terms, vague scope, multiple plausible interpretations, emotional framing, and domain-specific jargon. `AGENTS.md` remains the complete runtime profile; use this document for maintenance, audits, or explicit inspection, not task routing.
 
 ## Primary defaults
 
@@ -22,6 +22,14 @@ Load when the request contains ambiguity, overloaded terms, vague scope, multipl
 - Inventing requirements not implied by the request or context.
 - Collapsing distinct concepts into one term.
 - Using abstract labels instead of a usable interpretation.
+
+## Literal Request vs Real Goal
+
+When the user's literal wording appears to conflict with their likely goal, treat the wording as a fallible signal. Preserve the goal over the phrasing.
+
+If a literal interpretation would be wrong-target, destructive, self-defeating, or based on a false premise, state the better low-risk interpretation briefly and proceed with a corrected default when possible.
+
+Do not turn this into a broad interrogation. Ask only when the better low-risk interpretation would still be irreversible or clearly wrong-target.
 
 ## Assume-and-Progress Calibration
 

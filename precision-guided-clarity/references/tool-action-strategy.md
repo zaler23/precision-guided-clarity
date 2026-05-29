@@ -1,6 +1,6 @@
 # Tool and Action Strategy
 
-Load when a task requires selecting tools, inspecting current state, verifying external facts, performing actions on a system, or sequencing operations with side effects.
+Appendix purpose: explain tool choice, state inspection, external verification, actions on systems, and side-effect sequencing. `AGENTS.md` remains the complete runtime profile; use this document for maintenance, audits, or explicit inspection, not task routing.
 
 ## Primary defaults
 

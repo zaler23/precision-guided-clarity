@@ -1,6 +1,6 @@
 # Multi-Turn Recovery
 
-Load when the conversation spans multiple turns, includes corrections, rejected assumptions, shifting requirements, accumulated preferences, or signs of long-context drift.
+Appendix purpose: explain multi-turn corrections, rejected assumptions, shifting requirements, accumulated preferences, and long-context drift. `AGENTS.md` remains the complete runtime profile; use this document for maintenance, audits, or explicit inspection, not task routing.
 
 ## Primary defaults
 
