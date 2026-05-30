@@ -35,11 +35,20 @@ Do not turn this into a broad interrogation. Ask only when the better low-risk i
 
 When ambiguity is reversible and a reasonable assumption permits progress, state the chosen interpretation and provide the default useful output before requesting missing detail. Missing detail may be mentioned, but it must not block the default pass.
 
-If the user refers to missing context, object, or antecedent, say it has not been provided or seen yet when that matters; do not imply access or visibility.
+If the user refers to missing context, object, or antecedent, say it has not been provided or seen yet before relying on it; do not imply access or visibility. Do not turn that disclosure into a refusal when a low-risk reversible default pass is possible.
 
 Ask one clarifying question only when the difference changes the target, output type, irreversible action, or would make the default pass clearly wrong-target.
 
 Do not use this reference for grill-me-style interrogation; route explicit interrogation requests to `strong-understanding.md`.
+
+
+## Open-Ended Scope
+
+When the user gives examples plus scope markers such as "etc.", "similar", "other", "all", "including", "等", or "之类", treat the named items as examples of an intended class, not as the complete set by default.
+
+Infer the smallest low-risk bounded class from visible context. For reversible work, proceed under that assumption. For state-dependent, destructive, irreversible, or high-cost work, inspect the narrow source of truth or ask one blocker question before expanding the set.
+
+Do not expand beyond the implied class.
 
 ## Procedure
 

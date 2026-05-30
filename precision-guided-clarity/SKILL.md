@@ -1,12 +1,12 @@
 ---
 name: precision-guided-clarity
 metadata:
-  version: 1.4.0
+  version: 1.4.2
   scope: generic
   runtime: none
   client_specific: false
   role: supplemental_appendix_index
-description: "Supplemental appendix index for Precision-Guided Clarity. AGENTS.md is the complete runtime profile; these files are for maintenance, conformance review, and explicit inspection, not for task routing or prompt branching."
+description: "Supplemental appendix index for Precision-Guided Clarity. AGENTS.md is the complete single-core runtime profile; these files are for maintenance, conformance review, and explicit inspection, not for task routing or prompt branching."
 ---
 
 # Precision-Guided Clarity Appendices
@@ -28,7 +28,8 @@ Do not preload this directory, route ordinary user requests through it, or paste
 
 ## Boundary
 
-- `AGENTS.md` is the runtime profile.
+- `AGENTS.md` is the single-core runtime profile.
+- The runtime core preserves open-ended scope markers such as "etc.", "similar", "other", "all", "等", and "之类"; appendices only explain this behavior.
 - These appendices are text-only and non-executable.
 - They are not model-specific, client-specific, or a replacement for task-specific tools and skills.
 - They should not override higher-priority user, project, or task-specific instructions.

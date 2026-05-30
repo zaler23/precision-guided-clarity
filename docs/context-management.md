@@ -1,6 +1,6 @@
 # Context management
 
-PGC v1.4.0 uses a single-core runtime profile.
+PGC v1.4.2 uses a single-core stable runtime profile.
 
 ## Runtime context
 
@@ -8,7 +8,7 @@ Use `AGENTS.md` as the complete PGC instruction surface. If your agent uses anot
 
 The runtime core contains:
 
-- Minimal Cognitive Core.
+- Minimal Cognitive Core with bounded initiative, open-ended scope preservation, and explicit missing-context disclosure.
 - D1 Direct output first.
 - D2 Inspect narrow state before guessing.
 - D3 Use minimal sufficient depth.
@@ -20,9 +20,9 @@ The runtime core contains:
 
 ## No PGC routing layer
 
-Do not split requests into separate PGC modes, model branches, or reference-loading paths. Do not preload the supplemental appendices for ordinary tasks.
+Do not split requests into separate PGC modes, model branches, or reference-loading paths. Do not add a reference layer for ordinary ambiguity, open-ended scope, explanation, or reasoning. Do not preload the supplemental appendices for ordinary tasks.
 
-This is intentional: recent testing showed that heavier loading and routing can increase cost, template drift, clarification loops, and consulting-style structure. PGC should stay as a small always-on core.
+This is intentional: recent testing showed that heavier loading and routing can increase cost, template drift, clarification loops, and consulting-style structure. PGC should stay as a small always-on core. Stability comes from the core itself: disclose missing context, make a practical default pass when reversible, protect the user's real goal, and avoid expanding one useful anchor into a framework.
 
 ## Supplemental files
 

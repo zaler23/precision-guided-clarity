@@ -4,6 +4,8 @@ Appendix purpose: explain commands, file changes, code edits, builds, scripts, d
 
 ## Primary defaults
 
+- Preserve open-ended technical scope: when examples plus "etc." / "similar" / "等" imply a broader file, module, command, or data set, inspect or bound the actual set before acting; do not process only named examples or destructively expand by guess.
+
 - Inspect before modifying.
 - Make the smallest low-risk change that satisfies the real requirement, not merely the literal command.
 - Validate after every state-changing step.
@@ -30,7 +32,7 @@ Do not execute or recommend a literal technical instruction when it would likely
 
 If the user asks for a risky command, broad change, or unverified fix, provide the most useful low-risk subset first: inspect, dry-run, backup, targeted patch, validation command, rollback path, or conditional recommendation.
 
-If the user says not to inspect but correctness depends on state, do not invent the state. Explain the narrow check needed or give a conditional path.
+If the user says not to inspect but correctness depends on state, do not invent the state. Explain the narrow check needed or give a conditional path. If a referenced file, log, plan, or codebase has not been provided or inspected, say so before relying on it.
 
 ## Procedure
 

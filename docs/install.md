@@ -1,6 +1,6 @@
 # Install
 
-PGC v1.4.0 is a single-core instruction profile.
+PGC v1.4.2 is a single-core instruction profile.
 
 ## 1. Copy the runtime profile
 
@@ -18,9 +18,9 @@ Do not preload `precision-guided-clarity/` or `docs/` as prompt content for ordi
 PGC is delimited by visible markers:
 
 ```text
-<!-- BEGIN precision-guided-clarity v1.4.0 -->
+<!-- BEGIN precision-guided-clarity v1.4.2 -->
 ...
-<!-- END precision-guided-clarity v1.4.0 -->
+<!-- END precision-guided-clarity v1.4.2 -->
 ```
 
 Keep these markers so updates and removal are mechanical.
